@@ -78,6 +78,8 @@ Botón	Color	GPIO
 6	Azul	25
 7	Amarillo	32
 Buzzer	—	13
+
+
 🌱 Sensor de humedad (1 sensor)
 Señal	ESP32
 AO	34
@@ -89,6 +91,8 @@ SDA	21
 SCL	22
 VCC	5V
 GND	GND
+
+
 🌡️ DHT11
 Señal	GPIO
 DATA	4
