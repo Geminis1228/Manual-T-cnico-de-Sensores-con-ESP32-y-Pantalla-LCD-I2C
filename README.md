@@ -69,35 +69,59 @@ Cant.	Componente
 🔌 2. Conexiones
 
 🎹 Piano de 7 botones – Pines del ESP32
+
 Botón	Color	GPIO
+
 1	Azul	26
+
 2	Verde	27
+
 3	Amarillo	14
+
 4	Blanco	12
+
 5	Rojo	33
+
 6	Azul	25
+
 7	Amarillo	32
+
 Buzzer	—	13
 
 
 🌱 Sensor de humedad (1 sensor)
+
 Señal	ESP32
+
 AO	34
+
 VCC	3.3V
+
 GND	GND
+
 LCD I2C
+
 LCD	ESP32
+
 SDA	21
+
 SCL	22
+
 VCC	5V
+
 GND	GND
 
 
 🌡️ DHT11
+
 Señal	GPIO
+
 DATA	4
+
 VCC	3.3V
+
 GND	GND
+
 📐 3. Diagramas Wokwi
 
 (Agrega aquí tus enlaces cuando los genere)
@@ -106,111 +130,9 @@ Proyecto	Link Wokwi
 Piano 7 botones	—
 Humedad suelo	—
 DHT11 + LCD	—
-💻 4. Códigos Arduino
-🎹 Piano digital
-#include <driver/ledc.h>
 
-const int btn1 = 26;
-const int btn2 = 27;
-const int btn3 = 14;
-const int btn4 = 12;
-const int btn5 = 33;
-const int btn6 = 25;
-const int btn7 = 32;
+🧪  Sección de Pruebas – Sensor de Humedad
 
-const int buzzerPin = 13;
-
-int notas[] = {262, 294, 330, 349, 392, 440, 494};
-int botones[] = { btn1, btn2, btn3, btn4, btn5, btn6, btn7 };
-
-void setup() {
-  for (int i = 0; i < 7; i++) {
-    pinMode(botones[i], INPUT_PULLUP);
-  }
-
-  ledcSetup(0, 2000, 10);
-  ledcAttachPin(buzzerPin, 0);
-}
-
-void loop() {
-  bool notaTocada = false;
-
-  for (int i = 0; i < 7; i++) {
-    if (digitalRead(botones[i]) == LOW) {
-      ledcWriteTone(0, notas[i]);
-      notaTocada = true;
-      break;
-    }
-  }
-
-  if (!notaTocada) {
-    ledcWriteTone(0, 0);
-  }
-}
-
-🌱 Sensor de humedad (1 sensor – 3 macetas)
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
-
-LiquidCrystal_I2C lcd(0x27, 16, 2);
-
-int sensor = 34;
-
-void setup() {
-  Serial.begin(115200);
-  lcd.init();
-  lcd.backlight();
-}
-
-void loop() {
-  int lectura = analogRead(sensor);
-
-  lcd.clear();
-  lcd.setCursor(0, 0);
-  lcd.print("Humedad: ");
-  lcd.print(lectura);
-
-  lcd.setCursor(0, 1);
-  lcd.print("Mover sensor...");
-
-  delay(1500);
-}
-
-🌡️ DHT11 + LCD
-#include <DHT.h>
-#include <LiquidCrystal_I2C.h>
-
-#define DHTPIN 4
-#define DHTTYPE DHT11
-
-DHT dht(DHTPIN, DHTTYPE);
-LiquidCrystal_I2C lcd(0x27, 16, 2);
-
-void setup() {
-  dht.begin();
-  lcd.init();
-  lcd.backlight();
-}
-
-void loop() {
-  float h = dht.readHumidity();
-  float t = dht.readTemperature();
-
-  lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print("Temp: ");
-  lcd.print(t);
-  lcd.print("C");
-
-  lcd.setCursor(0,1);
-  lcd.print("Hum: ");
-  lcd.print(h);
-  lcd.print("%");
-
-  delay(1000);
-}
-
-🧪 5. Sección de Pruebas – Sensor de Humedad
 🎯 Objetivo
 
 Evaluar el funcionamiento del sensor moviéndolo entre:
