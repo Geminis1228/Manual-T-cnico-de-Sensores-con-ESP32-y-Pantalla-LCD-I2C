@@ -21,26 +21,53 @@ Este repositorio contiene tres proyectos electrónicos funcionales desarrollados
 
 🧰 1. Lista de Materiales (BOM)
 🔧 Componentes generales
+
 Cant.	Componente
+
 1	ESP32 DevKit
+
 1	Protoboard
+
 —	Cables Dupont
+
 —	PC con Arduino IDE
+
+
 🎹 Para el Piano Digital
+
 Cant.	Componente
+
 7	Botones
+
 1	Buzzer pasivo
+
 7	Resistencias 10k (si no se usa INPUT_PULLUP)
+
+
+
 🌱 Proyecto de Humedad del Suelo
+
+
 Cant.	Componente
+
 1	Sensor de humedad de tierra
+
 1	Módulo amplificador
+
 1	LCD 16x2 con I2C
+
+
+
 🌡️ Proyecto DHT11
+
 Cant.	Componente
+
 1	DHT11
+
 1	Pantalla LCD 16x2 con I2C
+
 🔌 2. Conexiones
+
 🎹 Piano de 7 botones – Pines del ESP32
 Botón	Color	GPIO
 1	Azul	26
