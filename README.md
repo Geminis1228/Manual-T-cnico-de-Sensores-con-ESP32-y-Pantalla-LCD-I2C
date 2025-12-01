@@ -15,8 +15,6 @@ Este repositorio contiene tres proyectos electrónicos funcionales desarrollados
 
 🔌 Conexiones y diagramas
 
-💻 Códigos Arduino completos
-
 📊 Resultados y conclusiones
 
 🧰 1. Lista de Materiales (BOM)
